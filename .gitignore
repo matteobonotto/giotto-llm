@@ -1,0 +1,44 @@
+# Files
+*~
+*.o
+*.gz
+*.log
+/run_in_sequence.sh
+submission*.json
+nohup.out
+requirements.txt
+mlops/docker/*.whl
+visu.txt
+resource_usage_log.csv
+launch_validation.sh
+
+# Symbolic links
+notebooks/gb/kaggle
+notebooks/gb/finetuned_models
+notebooks/gb/*.pickle
+notebooks/gb/re-arc/
+notebooks/gb/llama_tokenizer*
+
+# Directories
+/dist
+/tmp
+__pycache__/
+/logs
+/synth_data
+/output
+/mlruns
+/finetuned_models
+/wheels
+/models
+/llm_prompts/tests/tmp*
+/store
+/subs
+
+# venv
+python-venv/*
+venv
+## models
+/llama_32_3B_rearc*
+
+# macOS
+.DS_Store

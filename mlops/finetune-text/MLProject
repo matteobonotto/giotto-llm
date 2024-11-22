@@ -1,0 +1,10 @@
+name: finetune
+
+docker_env:
+  image: cluster-manager:5052/llm-finetune
+
+entry_points:
+  main:
+    parameters:
+      max_seq_length: int
+    command: "python3 -m llm_prompts.finetuning.train_text --max_seq_length {max_seq_length}"
