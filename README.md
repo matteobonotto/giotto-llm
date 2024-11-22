@@ -1,11 +1,10 @@
-# LLM prompt engineering
-
-[[_TOC_]]
+# giotto-llm
 
 ## Overview
-We solve ARC tasks by prompting a LLM model that can fit on a P100 GPU (16GB).
 
-**Important** See the `Makefile` for useful commands.
+This repo is a wrapper of many open source packages that are needed to fine-tune LLMs and run them in inference mode effectively.
+
+**Important:** See the `Makefile` for useful commands.
 
 ## Setup
 
