@@ -1,7 +1,7 @@
 from typing import Callable
 
-from llm_prompts.prompts.grid_formatter import GridFormatter
-from llm_prompts.prompts.text_prompts import TextPromptBase
+from giotto_llm.prompts.grid_formatter import GridFormatter
+from giotto_llm.prompts.text_prompts import TextPromptBase
 
 from transformers import AutoTokenizer
 

@@ -5,7 +5,7 @@ import numpy as np
 from giotto_llm.bucket.deserialize import deserialize
 
 
-def serialize(image):
+def serialize(image: np.ndarray) -> str:
     """
     Serialize an image to a RLE string, and verifies that it can be deserialized back to the original image.
 
@@ -20,7 +20,7 @@ def serialize(image):
     return rle_string
 
 
-def serialize_without_verify(image):
+def serialize_without_verify(image: np.ndarray) -> str:
     height, width = image.shape
     s = f"{width} {height} "
     last_line = ""
@@ -35,7 +35,7 @@ def serialize_without_verify(image):
     return s
 
 
-def rle_serialize_line(line):
+def rle_serialize_line(line: np.ndarray) -> str:
     color = line[0]
     is_same_color = np.all(line == color)
     if is_same_color:
@@ -43,7 +43,7 @@ def rle_serialize_line(line):
     return rle_serialize_line_inner(line)
 
 
-def rle_serialize_line_inner(line):
+def rle_serialize_line_inner(line: np.ndarray) -> str:
     width = len(line)
     current_line = ""
     color = line[0]

@@ -221,7 +221,7 @@ class QwenVLWrapper(ModelWrapper):
 
     def collate_fn_train(
         self,
-        examples: list[tuple[OAIMessage, JSONTask, dict[str, Any], int, _BackTransformTestOutput]],
+        examples: list[tuple[OAIMessage, JSONTask, int, _BackTransformTestOutput]],  # type: ignore
         mask_inputs: bool = True,
     ) -> dict[str, Tensor]:
         """The collate function."""

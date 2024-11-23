@@ -11,8 +11,8 @@ import json
 import os
 import pathlib
 
-import fire
-from google.cloud import storage
+import fire  # type: ignore
+from google.cloud import storage  # type: ignore
 
 METADATA_FILE = "metadata.json"
 BUCKET_NAME = "llm-wheels"
@@ -44,8 +44,8 @@ class Commands(object):
                 version = metadata[dir_key]
 
             for b in blobs:
-                if f"{dir_key}_V{version:03d}" in b.name:
-                    print(f"- {b.name}")
+                if f"{dir_key}_V{version:03d}" in b.name:  # type: ignore
+                    print(f"- {b.name}")  # type: ignore
 
     def update(self, directory: str) -> None:
         """Update a directory."""
@@ -99,7 +99,7 @@ def read_metadata(metadata_file: str) -> dict:
         return dict()
 
     with open(metadata_file, "rb") as f:
-        metadata = json.load(f)
+        metadata: dict = json.load(f)
     return metadata
 
 
@@ -109,7 +109,7 @@ def write_metadata(
 ) -> None:
     """Write the metadata file."""
     with open(metadata_file, "w") as f:
-        metadata = json.dump(metadata, f)
+        json.dump(metadata, f)
 
 
 def list_gcs_bucket(bucket_name: str) -> list[str]:

@@ -91,8 +91,8 @@ class CausalLMWrapper(ModelWrapper):
 
     def collate_fn_eval(
         self,
-        examples: list[tuple[OAIMessage, JSONTask, int, _BackTransformTestOutput]],
-    ) -> dict[str | list[int] | list[_BackTransformTestOutput] | list[JSONTask]]:
+        examples: list[tuple[OAIMessage, JSONTask, dict[str, Any], int, _BackTransformTestOutput]],
+    ) -> dict[str, dict[str, Any] | list[int] | list[_BackTransformTestOutput] | list[JSONTask]]:
         """The collate function."""
         conversation = [example[0][:2] for example in examples]
         encoded_conversation = self.tokenizer.apply_chat_template(
@@ -119,7 +119,7 @@ class CausalLMWrapper(ModelWrapper):
 
     def collate_fn_train(
         self,
-        examples: list[tuple[OAIMessage, JSONTask, dict[str, Any], int, _BackTransformTestOutput]],
+        examples: list[tuple[OAIMessage, JSONTask, int, _BackTransformTestOutput]],  # type: ignore
         mask_inputs: bool = True,
     ) -> dict[str, Tensor]:
         """The collate function."""

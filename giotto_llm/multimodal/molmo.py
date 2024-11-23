@@ -119,7 +119,7 @@ class MolmoWrapper(ModelWrapper):
             generation_config=generation_config,
             tokenizer=self.tokenizer,
             prefix_allowed_tokens_fn=partial(
-                self.prefix_allowed_tokens_fn,
+                self.prefix_allowed_tokens_fn,  # type: ignore
                 input_size=batch_inputs["input_ids"].shape[1],
             ),
         )
@@ -182,7 +182,7 @@ class MolmoWrapper(ModelWrapper):
 
     def collate_fn_train(
         self,
-        examples: list[tuple[OAIMessage, JSONTask, dict[str, Any], int, _BackTransformTestOutput]],
+        examples: list[tuple[OAIMessage, JSONTask, int, _BackTransformTestOutput]],  # type: ignore
         mask_inputs: bool = True,
     ) -> dict[str, Tensor]:
         """The collate function."""
