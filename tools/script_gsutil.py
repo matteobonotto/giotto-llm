@@ -2,7 +2,7 @@ import os
 from google.cloud import storage
 
 # Initialize the Google Cloud Storage client
-client = storage.Client()
+client = storage.Client.create_anonymous_client()
 
 # Define bucket name and blob (object) name
 bucket_name = "public-models-and-datasets"
