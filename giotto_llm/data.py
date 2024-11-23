@@ -80,9 +80,7 @@ class Dataset(torch.utils.data.Dataset):
         """The size of the dataset."""
         return self.size
 
-    def __getitem__(
-        self, idx: int
-    ) -> tuple[OAIMessage, JSONTask, int, _BackTransformTestOutput]:
+    def __getitem__(self, idx: int) -> tuple[OAIMessage, JSONTask, int, _BackTransformTestOutput]:
         """Get transformed task in OAIMessage format
 
         Returns:
