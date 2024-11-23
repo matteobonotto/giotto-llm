@@ -42,5 +42,7 @@ jobs:
         mkdir models/llama || true
         pip install google-cloud-storage
         python tools/script_gsutil.py
+        ls
+        pwd
         poetry run pytest -v giotto_llm/tests
 
