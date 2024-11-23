@@ -180,9 +180,7 @@ def get_train_dataset(
     model_type: Literal["image-text-to-text", "text-to-text"],
     grid_formatter: GridFormatter,
 ) -> Dataset:
-    tasks = ReaderPickle(
-        dataset_dir="./synth_data", dataset_category=config.dataset
-    ).read_tasks()
+    tasks = ReaderPickle(dataset_dir="./synth_data", dataset_category=config.dataset).read_tasks()
     tasks = split_tasks_by_test(tasks)
 
     transforms = Transforms(
