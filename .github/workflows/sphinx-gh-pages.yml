@@ -20,20 +20,25 @@ jobs:
         python -m pip install poetry==1.8.3
         poetry config virtualenvs.in-project true
         poetry install --no-interaction --no-ansi --without optional
-    - name: Git checkout and build sphinx docs
+    - name: Build sphinx docs
       run: |
-        git config --global user.name "github-pages[bot]"
-        git config --global user.email "41898281+github-pages[bot]@users.noreply.github.com"
-        git fetch
-        git checkout github-pages
-        git checkout main
+        # git config --global user.name "github-pages[bot]"
+        # git config --global user.email "41898281+github-pages[bot]@users.noreply.github.com"
+        # git fetch
+        # git checkout github-pages
+        # git checkout main
         cd docs
         poetry run make html
-    - name: push to github-pages
-      run: |
-        git symbolic-ref HEAD refs/heads/gh-pages
-        git reset --mixed github-pages
-        git add --all
-        git add -f docs/build
-        git commit -m "push sphinx build"
-        git push origin github-pages
+    # - name: push to branch github-pages
+    #  run: |
+    #    git symbolic-ref HEAD refs/heads/gh-pages
+    #    git reset --mixed github-pages
+    #    git add --all
+    #    git add -f docs/build
+    #    git commit -m "push sphinx build"
+    #    git push origin github-pages
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs/build/html
