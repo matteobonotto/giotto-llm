@@ -6,6 +6,10 @@ This repo is a wrapper of many open source packages that are needed to fine-tune
 
 **Important:** See the `Makefile` for useful commands.
 
+## Documentation
+
+The online documentation con be found at https://giotto-ai.github.io/giotto-llm/index.html
+
 ## Setup
 
 ### Environmental variables
