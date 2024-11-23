@@ -39,20 +39,18 @@ try:
 
     for blob in blobs:
         # Construct the relative path for the local file
-        relative_path = os.path.relpath(blob.name, "llama_3_2_1B_instruct")
-        local_path = os.path.join(destination_dir, relative_path)
+        local_dir = os.path.join(destination_dir, "llama_3_2_1B_instruct", blob.name)
 
         # If the blob name ends with '/', it's a folder (skip it)
         if blob.name.endswith('/'):
             continue
 
         # Ensure the local directory exists
-        local_dir = os.path.dirname(local_path)
         os.makedirs(local_dir, exist_ok=True)
 
         # Download the file
-        print(f"Downloading {blob.name} to {local_path}...")
-        blob.download_to_filename(local_path)
+        print(f"Downloading {blob.name} to {local_dir}...")
+        blob.download_to_filename(local_dir)
 
     print("Model downloaded successfully.")
 except Exception as e:
