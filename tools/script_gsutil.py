@@ -38,20 +38,20 @@ try:
     blobs = bucket.list_blobs(prefix=folder_path)
 
     for blob in blobs:
-        # Construct the relative path for the local file
-        file_name = (blob.name).rsplit('/', 1)[-1]
-        local_dir = os.path.join(destination_dir, "llama_3_2_1B_instruct", file_name)
-
         # If the blob name ends with '/', it's a folder (skip it)
         if blob.name.endswith('/'):
             continue
+        # Construct the relative path for the local file
+        file_name = (blob.name).rsplit('/', 1)[-1]
+        local_dir = os.path.join(destination_dir, "llama_3_2_1B_instruct")
+        loca_file = os.path.join(local_dir, file_name)
 
         # Ensure the local directory exists
         os.makedirs(local_dir, exist_ok=True)
 
         # Download the file
-        print(f"Downloading {blob.name} to {local_dir}...")
-        blob.download_to_filename(local_dir)
+        print(f"Downloading {blob.name} to {loca_file}...")
+        blob.download_to_filename(loca_file)
 
     print("Model downloaded successfully.")
 except Exception as e:
