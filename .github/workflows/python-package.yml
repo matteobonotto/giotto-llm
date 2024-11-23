@@ -38,7 +38,6 @@ jobs:
         poetry run mypy giotto_llm --config-file pyproject.toml
     - name: Test
       run: |
-        mkdir synth_data || true
         mkdir models || true
         mkdir models/llama || true
         pip install google-cloud-storage
