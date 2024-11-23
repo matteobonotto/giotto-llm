@@ -1,7 +1,7 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: Deploy to github-pages
+name: Deploy to gh-pages
 on: [workflow_dispatch]
 jobs:
   build:
@@ -29,14 +29,14 @@ jobs:
         # git checkout main
         cd docs
         poetry run make html
-    # - name: push to branch github-pages
+    # - name: push to branch gh-pages
     #  run: |
     #    git symbolic-ref HEAD refs/heads/gh-pages
-    #    git reset --mixed github-pages
+    #    git reset --mixed gh-pages
     #    git add --all
     #    git add -f docs/build
     #    git commit -m "push sphinx build"
-    #    git push origin github-pages
+    #    git push origin gh-pages
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
