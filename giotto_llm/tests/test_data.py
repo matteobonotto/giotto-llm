@@ -16,12 +16,7 @@ from giotto_llm.consts import (
     DEFAULT_START_ROW_TOKEN,
     ROOT_PATH,
 )
-from giotto_llm.data import (
-    Dataset,
-    task_to_image,
-    task_to_oai_causal_lm,
-    task_to_oai_vision,
-)
+from giotto_llm.data import Dataset, task_to_image, task_to_oai_causal_lm, task_to_oai_vision
 from giotto_llm.prompts.consts import TYPES_OF_PROMPTS
 from giotto_llm.prompts.grid_formatter import GridFormatter
 from giotto_llm.prompts.text_prompts import TextPromptBase
