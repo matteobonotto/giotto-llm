@@ -70,6 +70,7 @@ class EvaluationConfig(BaseModel):
                 raise ValueError(f"Cannot set {key} in generation_config")
         return value
 
+
 class ModelWrapper:
     """Baseclass for a unified interface between models.
 
@@ -207,10 +208,7 @@ class ModelWrapper:
                     t for t in backtransforms for _ in range(generation_config.num_return_sequences)
                 ]
 
-            output = self._generate(
-                batch_inputs,
-                generation_config
-            )
+            output = self._generate(batch_inputs, generation_config)
             input_size = input_ids.shape[1]
             responses = self._decode(output.sequences, input_size=input_size)
             log_likelihoods = self._get_log_likelihoods(output, input_size=input_size)
@@ -385,10 +383,10 @@ class ModelWrapper:
         generation_config: GenerationConfig,
     ) -> ModelOutput:
         return self.model.generate(
-                **batch_inputs,
-                generation_config=generation_config,
-                tokenizer=self.tokenizer,
-            )
+            **batch_inputs,
+            generation_config=generation_config,
+            tokenizer=self.tokenizer,
+        )
 
     def _set_output_token_ids(self) -> None:
         self.output_token_ids: dict[str | int, int] = {
