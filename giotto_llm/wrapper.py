@@ -50,7 +50,7 @@ class EvaluationConfig(BaseModel):
     n_attempts: int | None = Field(ge=1, default=None)
     n_transforms: int = Field(ge=1, default=1)
     batch_size: int = Field(ge=1, default=1)
-    n_dataloader_workers: int = Field(ge=1, default=psutil.cpu_count(logical=False))
+    n_dataloader_workers: int = Field(ge=1, default=psutil.cpu_count(logical=False))  # type: ignore
     image_resize_factor: int = 3
     input_tokens_limit: int | None = None
     save_generation_metadata: bool = False

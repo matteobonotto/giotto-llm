@@ -88,7 +88,7 @@ class Dataset(torch.utils.data.Dataset):
         """
         task = self.tasks[self.keys[idx]]
         transformed_task, backtransform = transform_task(task=task, transforms=self.transforms)
-        oai_message = self.task_to_oai(task=transformed_task, messages_fn=self.messages_fn)  # type: ignore
+        oai_message = self.task_to_oai(task=transformed_task, messages_fn=self.messages_fn)
         return oai_message, transformed_task, idx, backtransform
 
 
@@ -143,7 +143,7 @@ class ConversationDataset(torch.utils.data.Dataset):
             OAIMessage, task index and a dummy backtransform
         """
         series = self.data[idx]
-        oai_message = self.series_to_oai(self.data[idx])  # type: ignore
+        oai_message = self.series_to_oai(self.data[idx])
         return oai_message, self.transformed_task, {}, idx, self.backtransform
 
 
