@@ -1,3 +1,3 @@
 
-def dummy_test():
+def dummy_test(): 
     assert 3 > 0
