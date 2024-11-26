@@ -1,3 +1,3 @@
 
 def dummy_test():
-    assert 1 > 0
+    assert 3 > 0
