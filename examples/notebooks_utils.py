@@ -6,7 +6,6 @@ from giotto_llm.prompts.text_prompts import TextPromptBase
 from transformers import AutoTokenizer
 
 
-
 def get_clean_prompts(
     tasks: dict,
     model_id: AutoTokenizer,
@@ -19,7 +18,7 @@ def get_clean_prompts(
     all_messages: dict = {task_id: prompt_fn(task, idx_i=0) for task_id, task in tasks.items()}
     _dataset = {
         task_id: tokenizer.apply_chat_template(
-            messages, # Note: only using first input
+            messages,  # Note: only using first input
             tokenize=False,
             add_generation_prompt=False,
         )
@@ -27,4 +26,7 @@ def get_clean_prompts(
         if idx_task < max_num_tasks
     }
     print(f">>> {_dataset=}")
-    return {task_id: (len(tokenizer.encode(conv)) < max_seq_length, conv) for task_id, conv in _dataset.items()}
+    return {
+        task_id: (len(tokenizer.encode(conv)) < max_seq_length, conv)
+        for task_id, conv in _dataset.items()
+    }

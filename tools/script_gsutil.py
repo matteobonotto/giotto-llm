@@ -39,10 +39,10 @@ try:
 
     for blob in blobs:
         # If the blob name ends with '/', it's a folder (skip it)
-        if blob.name.endswith('/'):
+        if blob.name.endswith("/"):
             continue
         # Construct the relative path for the local file
-        file_name = (blob.name).rsplit('/', 1)[-1]
+        file_name = (blob.name).rsplit("/", 1)[-1]
         local_dir = os.path.join(destination_dir, "llama_3_2_1B_instruct")
         loca_file = os.path.join(local_dir, file_name)
 
